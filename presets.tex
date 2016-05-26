@@ -1,0 +1,48 @@
+%fonts
+\setCJKmainfont[BoldFont={DFMing Std W9},ItalicFont={DFMing Std W7}]{DFMing Std W5} %W5 body, W7 character, W9 content
+\setCJKmonofont{DFKai-SB} %nominal mark
+\setCJKsansfont[BoldFont={PMingLiU-ExtB}]{PMingLiU} %make up the missing character
+\setmainfont{Times New Roman}
+\setmonofont{Segoe UI Symbol} %font for symbols
+
+%contents style
+\renewcommand{\contentsname}{部\ \ 首\ \ 索\ \ 引}
+\setcounter{tocdepth}{1} %only show chapter and section
+
+%section style
+\titleformat{\chapter}{\centering\LARGE\bfseries}{}{}{}
+\titleformat{\section}{\centering\Large\bfseries}{}{}{}
+\titleformat{\subsection}{\flushleft\LARGE\itshape}{}{}{}
+
+%cancelling numbering the section
+\makeatletter
+\newcommand\specialsectioning{\setcounter{secnumdepth}{-2}}
+\makeatother
+
+%page style
+\fancyhead[LO]{\nouppercase\leftmark}
+\fancyhead[RO]{\nouppercase\rightmark}
+\fancyhead[LE]{\nouppercase\rightmark}
+\fancyhead[RE]{\nouppercase\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\pagestyle{fancy}
+
+%set length
+\setlength\columnseprule{0.4pt} %separation rule between columns
+\setlength\parindent{0pt} %cancel indent
+
+%entry format
+\newcommand{\entry}[4]{\subsection{#1}\noindent\textbf{#2}\index{{\Huge{#3}}!{\large{#2}}!{\large{#1}}}\\ {#4}} % Defines the command to print each word on the page
+
+%adjust item separation
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt}
+
+%circled text
+\newcommand{\circled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0pt] (char) {#1};}}
+
+%index
+\renewcommand{\indexname}{拼\ \ 音\ \ 索\ \ 引}
+\makeindex
